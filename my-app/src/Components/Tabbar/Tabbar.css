@@ -1,0 +1,56 @@
+.Tabbar {
+  margin-top: 1%;
+  padding: 0.3%;
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  width: 50%;
+  border-bottom: 2px solid rgba(39, 106, 160, 0.31);
+}
+.photos-videos {
+  display: flex;
+
+  width: 15%;
+}
+.photos {
+  height: 35px;
+  border-bottom: 3px solid #e81244;
+  cursor: pointer;
+
+  width: 58px;
+  opacity: 0.5;
+  color: #230735;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 21px;
+}
+.videos {
+  margin-left: 40%;
+  height: 35px;
+  border-bottom: 3px solid #e81244;
+  cursor: pointer;
+  width: 60px;
+  color: #e81244;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 21px;
+}
+.favourites {
+  height: 35px;
+  border-bottom: #e81244;
+  border-bottom-style: solid;
+  width: 90px;
+  opacity: 0.5;
+  background-color: aliceblue;
+  color: #230735;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 21px;
+  cursor: pointer;
+}
