@@ -1,0 +1,107 @@
+.Video-large-div {
+  display: flex;
+  position: relative;
+  margin-top: 5%;
+  margin-bottom: 6%;
+}
+.Video-large-div-container {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  height: 150px;
+  width: 940px;
+}
+.Video-desc {
+  margin-left: 2%;
+  margin-top: 2%;
+  height: 28px;
+
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 28px;
+}
+.Video-heart-large-img {
+  cursor: pointer;
+  margin-top: 3%;
+  margin-left: 40%;
+  box-sizing: border-box;
+  height: 29px;
+  width: 31px;
+}
+.zoom {
+  margin-left: 3%;
+  margin-top: 2%;
+  display: flex;
+  width: 120px;
+  height: 40px;
+}
+
+.zoom-in {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 60px;
+  border-radius: 4px 0 0 4px;
+  background-color: #ffffff;
+}
+.zoom-out {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1%;
+  height: 40px;
+  width: 60px;
+
+  border-radius: 0 4px 4px 0;
+  background-color: #ffffff;
+}
+.profile-name-image-container-large {
+  display: flex;
+  align-items: center;
+  height: 31px;
+  width: 300px;
+
+  margin-left: 2%;
+}
+.profile-large-name {
+  margin-left: 15px;
+  height: 24px;
+  width: 124px;
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+.play-button-large {
+  position: absolute;
+  margin-top: 22%;
+  margin-left: 45%;
+}
+.play-icon-below {
+  position: absolute;
+  cursor: pointer;
+  height: 22px;
+  width: 21px;
+  margin-top: 50%;
+  margin-left: 2%;
+}
+.video-slider {
+  position: absolute;
+  margin-left: 7%;
+  margin-top: 50.7%;
+  box-sizing: border-box;
+  height: 2px;
+  width: 807px;
+  border: 4px solid #858585;
+}
+
+.fullscreen-icon {
+  cursor: pointer;
+  margin-left: 60.8%;
+  margin-top: 43.5%;
+}

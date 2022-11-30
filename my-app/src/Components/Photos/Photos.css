@@ -4,7 +4,7 @@
   width: 50%;
 
   margin-top: 2%;
-  height: 580px;
+  height: 680px;
   overflow: auto;
 }
 .photos-container {
@@ -44,4 +44,9 @@
   margin-top: 10px;
   height: 19px;
   width: 20px;
+}
+
+.photo-size {
+  height: 165px;
+  width: 220px;
 }
