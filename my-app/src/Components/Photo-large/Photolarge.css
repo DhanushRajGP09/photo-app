@@ -83,3 +83,57 @@
   letter-spacing: 0;
   line-height: 24px;
 }
+.back {
+  display: none;
+}
+@media screen and (max-width: 540px) {
+  .photo-large-div {
+    display: flex;
+    position: absolute;
+    margin-top: 0%;
+  }
+  .photo-desc {
+    margin-left: 50%;
+    width: 90%;
+  }
+  .photo-large-div-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 300px;
+    width: 300px;
+  }
+  .profile-name-image-container-large {
+    position: absolute;
+    display: flex;
+    margin-left: 10%;
+    margin-top: 20%;
+    text-shadow: 1px 1px 2px #000000;
+    align-items: center;
+    height: 31px;
+    width: 300px;
+  }
+  .photo-large {
+    height: 800px;
+    width: 550px;
+  }
+  .heart-large-img {
+    margin-top: 8%;
+    margin-left: 140%;
+    box-sizing: border-box;
+    height: 29px;
+    width: 31px;
+  }
+  .zoom {
+    display: none;
+  }
+  .back {
+    display: block;
+    height: 24px;
+    width: 24px;
+    margin-left: 30%;
+    margin-top: 3%;
+    position: absolute;
+  }
+}

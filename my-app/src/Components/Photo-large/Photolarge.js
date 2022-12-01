@@ -6,6 +6,7 @@ import filledheartlarge from "../../images/Filledheartlarge.png";
 import zoomin from "../../images/zoom-positive.png";
 import zoomout from "../../images/zoom-negative.png";
 import profilepiclarge from "../../images/profilepiclarge.png";
+import arrow from "../../images/arrow back.png";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,6 +23,7 @@ import {
 export default function Photolarge() {
   const [heartpressed, setHeartpressed] = useState(null);
   const image = useSelector(getLarge);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   console.log(image);
   const imagelink = image && image?.src && image?.src?.large;
@@ -33,6 +35,13 @@ export default function Photolarge() {
         <img src={imagelink} className="photo-large"></img>
 
         <div className="photo-large-div-container">
+          <img
+            src={arrow}
+            className="back"
+            onClick={() => {
+              navigate("/");
+            }}
+          ></img>
           <span className="photo-desc">{image && image?.alt}</span>
           <img
             className="heart-large-img"
