@@ -18,6 +18,7 @@
   width: 940px;
 }
 .photo-desc {
+  text-shadow: 1px 1px 2px #000000;
   margin-left: 2%;
   margin-top: 2%;
   height: 28px;
@@ -66,7 +67,7 @@
 .profile-name-image-container-large {
   position: absolute;
   display: flex;
-
+  text-shadow: 1px 1px 2px #000000;
   align-items: center;
   height: 31px;
   width: 300px;

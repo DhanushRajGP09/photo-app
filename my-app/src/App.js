@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
 import "./App.css";
@@ -14,6 +14,12 @@ import navimg from "./images/Nav-logo.png";
 import Favourites from "./Components/Favourites/Favourites";
 import Photolarge from "./Components/Photo-large/Photolarge";
 import Videolarge from "./Components/Video-large/Videolarge";
+import mobilelogo from "./images/mobile-logo.png";
+import { useDispatch } from "react-redux";
+import {
+  fetchAsyncSearch,
+  fetchAsyncSearchVideo,
+} from "./features/Photo/PhotoSlice";
 
 function App() {
   window.onscroll = function () {
@@ -30,6 +36,8 @@ function App() {
       document.getElementById("navbar").style.top = "-200px";
     }
   }
+  const [inputValue, setInputValue] = useState("");
+  const dispatch = useDispatch();
 
   return (
     <div className="App">
@@ -37,12 +45,28 @@ function App() {
         <div>
           <img src={navimg} className="nav-img"></img>
         </div>
+        <div>
+          <img src={mobilelogo} className="nav-mobile-img"></img>
+        </div>
         <div className="nav-search-bar">
           <input
             className="nav-search-input"
             placeholder="Search photos, videos, artists"
+            value={inputValue}
+            onChange={(event) => setInputValue(event.target.value)}
           ></input>
-          <button className="nav-search-button"> SEARCH</button>
+          <button
+            className="nav-search-button"
+            onClick={() => {
+              if (window.location.pathname === "/") {
+                dispatch(fetchAsyncSearch(inputValue));
+              } else {
+                dispatch(fetchAsyncSearchVideo(inputValue));
+              }
+            }}
+          >
+            SEARCH
+          </button>
         </div>
       </div>
       <BrowserRouter>

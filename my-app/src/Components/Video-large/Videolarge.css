@@ -13,6 +13,7 @@
 }
 .Video-desc {
   margin-left: 2%;
+  text-shadow: 1px 1px 2px #000000;
   margin-top: 2%;
   height: 28px;
   position: absolute;
@@ -69,6 +70,7 @@
   margin-left: 2%;
 }
 .profile-large-name {
+  text-shadow: 1px 1px 2px #000000;
   margin-left: 15px;
   height: 24px;
   width: 124px;

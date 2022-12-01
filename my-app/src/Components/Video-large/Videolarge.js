@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "./Videolarge.css";
 import largeimg from "../../images/image-large.png";
-import emptyheartlarge from "../../images/emptyheartlarge.png";
 
 import profilepiclarge from "../../images/profilepiclarge.png";
 import playlarge from "../../images/Playlarge.png";
 import playiconbelow from "../../images/playiconbelow.png";
 import fullscreen from "../../images/Fullscreenicon.png";
+import emptyheartlarge from "../../images/emptyheartlarge.png";
+import filledheartlarge from "../../images/Filledheartlarge.png";
 import pauseicon from "../../images/Pause-icon.png";
 import slidericon from "../../images/slider-icon.png";
-import { useSelector } from "react-redux";
-import { getLarge } from "../../features/Photo/PhotoSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToFav,
+  addToheart,
+  getLarge,
+  getLiked,
+  removeOneFromFav,
+  removeOneFromLiked,
+} from "../../features/Photo/PhotoSlice";
 import ReactPlayer from "react-player";
 export default function Videolarge() {
   const [play, setPlay] = useState(false);
@@ -20,11 +28,12 @@ export default function Videolarge() {
   }
   const video = useSelector(getLarge);
   console.log(video);
-
+  const [heartpressed, setHeartpressed] = useState(null);
   const videolink = video && video?.video_files?.[0]?.link;
   const video_desc = video && video?.url;
   const description = video_desc?.split("/");
-
+  const dispatch = useDispatch();
+  const getlikeddata = useSelector(getLiked);
   useEffect(() => {
     setData(video);
   }, []);
@@ -41,7 +50,24 @@ export default function Videolarge() {
           />
           <div className="Video-large-div-container">
             <span className="Video-desc">{video && description?.[4]}</span>
-            <img src={emptyheartlarge} className="Video-heart-large-img"></img>
+            <img
+              className="Video-heart-large-img"
+              src={
+                getlikeddata?.includes(video?.id)
+                  ? filledheartlarge
+                  : emptyheartlarge
+              }
+              onClick={() => {
+                if (!getlikeddata?.includes(video.id)) {
+                  dispatch(addToheart(video?.id));
+                  setHeartpressed(video?.id);
+                  dispatch(addToFav(video));
+                } else {
+                  dispatch(removeOneFromFav({ id: video?.id }));
+                  dispatch(removeOneFromLiked(video?.id));
+                }
+              }}
+            ></img>
             <div className="profile-name-image-container-large">
               <img src={profilepiclarge}></img>
               <span className="profile-large-name">

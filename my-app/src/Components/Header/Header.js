@@ -6,6 +6,7 @@ import Shape from "../../images/Shape.png";
 import {
   addSearch,
   fetchAsyncSearch,
+  fetchAsyncSearchVideo,
   getSearch,
 } from "../../features/Photo/PhotoSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -38,7 +39,11 @@ const Header = () => {
             <button
               className="search-button"
               onClick={() => {
-                dispatch(fetchAsyncSearch(inputValue));
+                if (window.location.pathname === "/") {
+                  dispatch(fetchAsyncSearch(inputValue));
+                } else {
+                  dispatch(fetchAsyncSearchVideo(inputValue));
+                }
               }}
             >
               {" "}

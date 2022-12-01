@@ -54,8 +54,8 @@ export default function Favourites() {
                 className="heart"
                 src={heart}
                 onClick={() => {
-                  dispatch(removeOneFromFav({}));
-                  dispatch(removeOneFromLiked());
+                  dispatch(removeOneFromFav({ id: data.id }));
+                  dispatch(removeOneFromLiked(data.id));
                 }}
               ></img>
             </div>

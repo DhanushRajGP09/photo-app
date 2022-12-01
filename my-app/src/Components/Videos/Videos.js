@@ -28,8 +28,9 @@ export default function Videos() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const name = "nature";
+  const getlikeddata = useSelector(getLiked);
+  console.log(getlikeddata);
 
-  const getfav = useSelector(getFav);
   const data = useSelector(getVideos);
   useEffect(() => {
     dispatch(fetchAsyncSearchVideo(name));
@@ -54,16 +55,21 @@ export default function Videos() {
                       navigate("/Videolarge");
                     }}
                   ></img>
-                  <img src={data.user.url} className="profile-pic"></img>
+                  <img src={oval} className="profile-pic"></img>
                   <span className="username">{data.user.name}</span>
 
                   <img
                     className="heart"
-                    src={getfav?.includes(data.id) ? filledheart : heart}
+                    src={getlikeddata?.includes(data.id) ? filledheart : heart}
                     onClick={() => {
-                      dispatch(addToheart(data.id));
-                      setHeartpressed(data.id);
-                      dispatch(addToFav(data));
+                      if (!getlikeddata?.includes(data.id)) {
+                        dispatch(addToheart(data.id));
+                        setHeartpressed(data.id);
+                        dispatch(addToFav(data));
+                      } else {
+                        dispatch(removeOneFromFav({ id: data?.id }));
+                        dispatch(removeOneFromLiked(data?.id));
+                      }
                     }}
                   ></img>
                 </div>

@@ -1,46 +1,43 @@
 .Tabbar {
-  margin-top: 1%;
   padding: 0.3%;
   display: flex;
   justify-content: space-between;
-  height: 30px;
+  height: 42px;
   width: 50%;
-  border-bottom: 2px solid rgba(39, 106, 160, 0.31);
+  border-bottom: 1px solid rgba(39, 106, 160, 0.31);
 }
+
 .photos-videos {
   display: flex;
-
-  width: 15%;
+  gap: 20px;
 }
+
 .photos {
   height: 35px;
-  cursor: pointer;
-  width: 58px;
+  opacity: 0.5;
   font-family: Roboto;
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 0;
   line-height: 21px;
+  cursor: pointer;
 }
+
 .videos {
-  margin-left: 40%;
   height: 35px;
-
-  cursor: pointer;
-  width: 60px;
-
+  opacity: 0.5;
   font-family: Roboto;
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 0;
   line-height: 21px;
+  cursor: pointer;
 }
+
 .favourites {
   height: 35px;
-
-  border-bottom-style: solid;
   width: 90px;
-
+  opacity: 0.5;
   font-family: Roboto;
   font-size: 18px;
   font-weight: bold;
@@ -48,8 +45,20 @@
   line-height: 21px;
   cursor: pointer;
 }
+
 .active {
   border-bottom: 2px solid #e81244;
-
+  padding-bottom: 3rem;
   color: #e81244;
+}
+
+a {
+  text-decoration: none;
+  color: #230735;
+}
+@media screen and (max-width: 908px) {
+  .Tabbar {
+    width: 93%;
+    height: 48px;
+  }
 }
