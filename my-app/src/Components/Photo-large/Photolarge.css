@@ -13,6 +13,7 @@
   position: absolute;
   display: flex;
   flex-wrap: wrap;
+
   height: 150px;
   width: 940px;
 }
@@ -20,9 +21,7 @@
   margin-left: 2%;
   margin-top: 2%;
   height: 28px;
-
   width: 500px;
-
   color: #ffffff;
   font-family: Roboto;
   font-size: 20px;
@@ -61,16 +60,16 @@
   margin-left: 1%;
   height: 40px;
   width: 60px;
-
   border-radius: 0 4px 4px 0;
   background-color: #ffffff;
 }
 .profile-name-image-container-large {
+  position: absolute;
   display: flex;
+
   align-items: center;
   height: 31px;
   width: 300px;
-
   margin-left: 2%;
 }
 .profile-large-name {

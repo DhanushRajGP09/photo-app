@@ -15,7 +15,7 @@
   margin-left: 2%;
   margin-top: 2%;
   height: 28px;
-
+  position: absolute;
   color: #ffffff;
   font-family: Roboto;
   font-size: 20px;
@@ -24,9 +24,10 @@
   line-height: 28px;
 }
 .Video-heart-large-img {
+  position: absolute;
+  margin-left: 95%;
   cursor: pointer;
   margin-top: 3%;
-  margin-left: 40%;
   box-sizing: border-box;
   height: 29px;
   width: 31px;
@@ -64,7 +65,7 @@
   align-items: center;
   height: 31px;
   width: 300px;
-
+  margin-top: 6%;
   margin-left: 2%;
 }
 .profile-large-name {
@@ -104,4 +105,8 @@
   cursor: pointer;
   margin-left: 60.8%;
   margin-top: 43.5%;
+}
+.video-large-img {
+  height: 522px;
+  width: 940px;
 }

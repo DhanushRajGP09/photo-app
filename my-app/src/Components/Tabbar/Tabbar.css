@@ -14,12 +14,8 @@
 }
 .photos {
   height: 35px;
-  border-bottom: 3px solid #e81244;
   cursor: pointer;
-
   width: 58px;
-  opacity: 0.5;
-  color: #230735;
   font-family: Roboto;
   font-size: 18px;
   font-weight: bold;
@@ -29,10 +25,10 @@
 .videos {
   margin-left: 40%;
   height: 35px;
-  border-bottom: 3px solid #e81244;
+
   cursor: pointer;
   width: 60px;
-  color: #e81244;
+
   font-family: Roboto;
   font-size: 18px;
   font-weight: bold;
@@ -41,16 +37,19 @@
 }
 .favourites {
   height: 35px;
-  border-bottom: #e81244;
+
   border-bottom-style: solid;
   width: 90px;
-  opacity: 0.5;
-  background-color: aliceblue;
-  color: #230735;
+
   font-family: Roboto;
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 0;
   line-height: 21px;
   cursor: pointer;
+}
+.active {
+  border-bottom: 2px solid #e81244;
+
+  color: #e81244;
 }

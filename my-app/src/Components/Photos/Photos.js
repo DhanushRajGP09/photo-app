@@ -14,74 +14,54 @@ import {
   fetchAsyncSearch,
   getFav,
   getLiked,
-  getRecents,
   getSearch,
-  removeOneFromFav,
-  removeOneFromLiked,
 } from "../../features/Photo/PhotoSlice";
 
 export default function Photos() {
-  const [unfilled, setUnfilled] = useState(true);
-  const [homedata, setHomedata] = useState([]);
+  const [heartpressed, setHeartpressed] = useState(null);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const name = "nature";
+  const name = "cars";
   const data = useSelector(getSearch);
   const getlikeddata = useSelector(getLiked);
   console.log(getlikeddata);
-  const getfavdata = useSelector(getFav);
-  console.log(getfavdata);
-
-  const heartfilled = () => {
-    if (getlikeddata.includes(data.id)) {
-      setUnfilled(false);
-    } else {
-      setUnfilled(true);
-    }
-  };
+  const getfav = useSelector(getFav);
+  console.log("ccccccccccc", getfav);
+  var liked = [];
 
   useEffect(() => {
     dispatch(fetchAsyncSearch(name));
-    setHomedata(data);
-  }, [dispatch]);
+  }, []);
 
   return (
     <>
-      {data.photos && (
+      {data && data?.photos && (
         <div className="photos-div">
           <div className="photos-container-div">
-            {data.photos.map((data) => {
+            {data?.photos?.map((data) => {
               return (
-                <div className="photos-container" key={data.id}>
+                <div className="photos-container" key={data?.id}>
                   <div>
                     <img
                       src={data.src.large}
                       className="photo-size"
                       onClick={() => {
-                        setTimeout(() => {
-                          navigate("/imagelarge");
-                        }, 3000);
+                        navigate("/imagelarge");
                         dispatch(fetchAsyncPhoto(data.id));
-                        dispatch(addRecent(data));
                       }}
                     ></img>
                   </div>
-
                   <img src={oval} className="profile-pic"></img>
-                  <span className="username">{data.photographer}</span>
+                  <span className="username">{data?.photographer}</span>
                   <img
                     className="heart"
-                    src={unfilled ? heart : filledheart}
+                    id={data?.id}
+                    src={getfav?.includes(data?.id) ? filledheart : heart}
                     onClick={() => {
-                      if (unfilled === true) {
-                        setUnfilled(!unfilled);
-                        dispatch(addToFav(data));
-                        dispatch(addToheart(data.id));
-                      } else {
-                        setUnfilled(!unfilled);
-                        dispatch(removeOneFromFav({ id: data.id }));
-                        dispatch(removeOneFromLiked(data.id));
-                      }
+                      dispatch(addToheart(data?.id));
+                      setHeartpressed(data?.id);
+                      dispatch(addToFav(data));
                     }}
                   ></img>
                 </div>

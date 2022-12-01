@@ -4,7 +4,14 @@ import PhotoApi from "../../common/Apis/PhotoApi";
 export const fetchAsyncPhoto = createAsyncThunk(
   "recent/fetchAsyncPhoto",
   async (id) => {
-    const response = await PhotoApi.get(`photos/${id}`);
+    const response = await PhotoApi.get(`v1/photos/${id}`);
+    return response.data;
+  }
+);
+export const fetchAsyncVideo = createAsyncThunk(
+  "recent/fetchAsyncPhoto",
+  async (id) => {
+    const response = await PhotoApi.get(`videos/videos/${id}`);
     return response.data;
   }
 );
@@ -12,7 +19,18 @@ export const fetchAsyncPhoto = createAsyncThunk(
 export const fetchAsyncSearch = createAsyncThunk(
   "recent/fetchAsyncSearch",
   async (payload) => {
-    const response = await PhotoApi.get(`search?query=${payload}&per_page=12`);
+    const response = await PhotoApi.get(
+      `v1/search?query=${payload}&per_page=12`
+    );
+    return response.data;
+  }
+);
+export const fetchAsyncSearchVideo = createAsyncThunk(
+  "recent/fetchAsyncSearchVideo",
+  async (payload) => {
+    const response = await PhotoApi.get(
+      `videos/search?query=${payload}&per_page=12`
+    );
     return response.data;
   }
 );
@@ -22,9 +40,11 @@ const PhotoSlice = createSlice({
   initialState: {
     recents: [],
     searchdata: {},
+    videos: {},
     large: {},
-    liked: ["123"],
-    favourites: ["123"],
+    imagelarge: {},
+    liked: [],
+    favourites: [],
   },
   reducers: {
     addRecent: (state, { payload }) => {
@@ -45,13 +65,31 @@ const PhotoSlice = createSlice({
       state.searchdata = { payload };
     },
     addToheart: (state, action) => {
-      state.liked.push(action.payload);
+      let isPresent = false;
+      for (let item of state.liked) {
+        if (item.id === action.payload) {
+          isPresent = true;
+        }
+      }
+      if (!isPresent) {
+        console.log("Got a hit");
+        state.liked.unshift(action.payload);
+      }
+    },
+    addToFav: (state, action) => {
+      let isPresent = false;
+      for (let item of state.favourites) {
+        if (item.id === action.payload) {
+          isPresent = true;
+        }
+      }
+      if (!isPresent) {
+        console.log("Got a hit");
+        state.favourites.unshift(action.payload);
+      }
     },
     removeOneFromLiked: (state, action) => {
       state.liked = state.liked.filter((data) => data !== action.payload);
-    },
-    addToFav: (state, action) => {
-      state.favourites.push(action.payload);
     },
     removeFromFav: (state) => {
       state.favourites = [];
@@ -74,14 +112,28 @@ const PhotoSlice = createSlice({
     },
     [fetchAsyncPhoto.fulfilled]: (state, { payload }) => {
       console.log("Fetched Succefully!!!");
-      return { ...state, recents: payload };
+      return { ...state, imagelarge: payload };
     },
     [fetchAsyncPhoto.rejected]: () => {
       console.log("Rejected....");
     },
     [fetchAsyncSearch.fulfilled]: (state, { payload }) => {
       console.log("Fetched Succefully!!!");
-      return { state, searchdata: payload };
+      return { ...state, searchdata: payload };
+    },
+    [fetchAsyncSearch.rejected]: () => {
+      console.log("Rejected....");
+    },
+    [fetchAsyncSearchVideo.fulfilled]: (state, { payload }) => {
+      console.log("Fetched Succefully!!!");
+      return { ...state, videos: payload };
+    },
+    [fetchAsyncSearchVideo.rejected]: () => {
+      console.log("Rejected....");
+    },
+    [fetchAsyncVideo.fulfilled]: (state, { payload }) => {
+      console.log("Fetched Succefully!!!");
+      return { ...state, large: payload };
     },
   },
 });
@@ -100,6 +152,8 @@ export const {
 export const getRecents = (state) => state.Photos.recents;
 export const getSearch = (state) => state.Photos.searchdata;
 export const getLarge = (state) => state.Photos.large;
+export const getImagelarge = (state) => state.Photos.imagelarge;
 export const getLiked = (state) => state.Photos.liked;
 export const getFav = (state) => state.Photos.favourites;
+export const getVideos = (state) => state.Photos.videos;
 export default PhotoSlice.reducer;

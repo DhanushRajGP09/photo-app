@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./header.css";
 import mask from "../../images/Mask.png";
 import logo from "../../images/Photo-logo.png";
+import Shape from "../../images/Shape.png";
 import {
   addSearch,
   fetchAsyncSearch,
@@ -43,6 +44,16 @@ const Header = () => {
               {" "}
               SEARCH
             </button>
+          </div>
+          <div className="search-bar-mobile">
+            <img className="search-icn" src={Shape} alt="pic" />
+
+            <input
+              className="search-input"
+              placeholder="Search photos, videos, artists"
+              value={inputValue}
+              onChange={(event) => setInputValue(event.target.value)}
+            ></input>
           </div>
         </div>
       </div>

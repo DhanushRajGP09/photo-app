@@ -8,46 +8,37 @@ import profilepiclarge from "../../images/profilepiclarge.png";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addRecent,
-  fetchAsyncPhoto,
-  getLarge,
-  getRecents,
-} from "../../features/Photo/PhotoSlice";
+import { getImagelarge, getLarge } from "../../features/Photo/PhotoSlice";
 
 export default function Photolarge() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const data = useSelector(getRecents);
-  console.log(data);
+  const image = useSelector(getLarge);
+  console.log(image);
+  const imagelink = image && image?.src && image?.src?.large;
 
   return (
     <>
-      {data && (
-        <div className="photo-large-div">
-          <img
-            src={data && data.src && data.src.large}
-            className="photo-large"
-          ></img>
+      <div className="photo-large-div">
+        <img src={imagelink} className="photo-large"></img>
 
-          <div className="photo-large-div-container">
-            <span className="photo-desc">{data.alt}</span>
-            <img className="heart-large-img" src={emptyheartlarge}></img>
-            <div className="zoom">
-              <div className="zoom-in">
-                <img src={zoomin}></img>
-              </div>
-              <div className="zoom-out">
-                <img src={zoomout}></img>
-              </div>
+        <div className="photo-large-div-container">
+          <span className="photo-desc">{image && image?.alt}</span>
+          <img className="heart-large-img" src={emptyheartlarge}></img>
+          <div className="zoom">
+            <div className="zoom-in">
+              <img src={zoomin}></img>
             </div>
-            <div className="profile-name-image-container-large">
-              <img src={data.photographer_id}></img>
-              <span className="profile-large-name">{data.photographer}</span>
+            <div className="zoom-out">
+              <img src={zoomout}></img>
             </div>
           </div>
+          <div className="profile-name-image-container-large">
+            <img src={profilepiclarge}></img>
+            <span className="profile-large-name">
+              {image && image?.photographer}
+            </span>
+          </div>
         </div>
-      )}
+      </div>
     </>
   );
 }

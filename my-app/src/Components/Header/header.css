@@ -85,3 +85,64 @@
   font-size: 14px;
   font-weight: bold;
 }
+.search-bar-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  .search-bar-mobile {
+    display: flex;
+
+    align-items: center;
+
+    height: 44px;
+
+    width: 110%;
+
+    margin-top: 6%;
+
+    border-radius: 4px;
+
+    background-color: #ffffff;
+  }
+
+  .search-bar {
+    display: none;
+  }
+
+  .search-icn {
+    margin-left: 4%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .header-inside {
+    /* width: 100%; */
+  }
+
+  .header-main {
+    width: auto;
+  }
+
+  .logo {
+    margin-top: 5%;
+
+    margin-left: 5%;
+  }
+
+  .discover-the-worlds {
+    width: auto;
+
+    height: auto;
+
+    margin-top: 10%;
+  }
+
+  .search-bar {
+    display: none;
+  }
+
+  .search-icn {
+    margin-left: 4%;
+  }
+}
